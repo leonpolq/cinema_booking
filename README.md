@@ -1,4 +1,4 @@
-.git
-.idea
+`npm install` to install dependencies
 
-.env
+`npm run server:dev` to start the development server
+`npm run client:dev` to start the development client    

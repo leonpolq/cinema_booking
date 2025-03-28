@@ -1,0 +1,18 @@
+{
+  "name": "root",
+  "private": true,
+  "scripts": {
+    "client:dev": "npm run start --workspace=@cinema/frontend",
+    "server:dev": "npm run dev --workspace=@cinema/server",
+    "dev": "concurrently \"npm run server:dev\" \"npm run client:dev\""
+  },
+  "workspaces": [
+    "packages/*"
+  ],
+  "devDependencies": {
+    "concurrently": "^9.1.2"
+  },
+  "dependencies": {
+    "react-router-dom": "^7.4.1"
+  }
+}
