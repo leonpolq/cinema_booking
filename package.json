@@ -4,6 +4,7 @@
   "scripts": {
     "client:dev": "npm run start --workspace=@cinema/frontend",
     "server:dev": "npm run dev --workspace=@cinema/server",
+    "server:migrate": "npm run migrate --workspace=@cinema/server",
     "dev": "concurrently \"npm run server:dev\" \"npm run client:dev\""
   },
   "workspaces": [

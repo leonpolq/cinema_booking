@@ -1,0 +1,598 @@
+{
+	"info": {
+		"_postman_id": "55b7c0f3-4229-42be-ba41-92eac9950ed4",
+		"name": "cinema",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "729021",
+		"_collection_link": "https://universal-star-268234.postman.co/workspace/My-Workspace~2254b51d-8d1a-4f5a-86fe-fa5d7c02888c/collection/729021-55b7c0f3-4229-42be-ba41-92eac9950ed4?action=share&source=collection_link&creator=729021"
+	},
+	"item": [
+		{
+			"name": "auth",
+			"item": [
+				{
+					"name": "/api/v1/auth/register",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"const data = pm.response.json();",
+									"",
+									"const authorization = data.token;",
+									"",
+									"pm.environment.set(\"token_auth\", `Bearer ${authorization}`);"
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"email\": \"leonpolq+user1@gmail.com\",\n    \"name\": \"Pavel admin\",\n    \"password\": \"pass1234\",\n    \"role\": \"USER\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{host}}/api/v1/auth/register",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"api",
+								"v1",
+								"auth",
+								"register"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "/api/v1/auth/login",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"const data = pm.response.json();",
+									"",
+									"const authorization = data.token;",
+									"",
+									"pm.environment.set(\"token_auth\", `Bearer ${authorization}`);"
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"email\": \"leonpolq@gmail.com\",\n    \"password\": \"pass1234\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{host}}/api/v1/auth/login",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"api",
+								"v1",
+								"auth",
+								"login"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "session",
+			"item": [
+				{
+					"name": "/api/v1/sessions",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									""
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "{{token_auth}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"hall\": {\n        \"name1\": \"Berlin City hall!!!\",\n        \"totalRows\": 13,\n        \"seatsPerRow\": 23\n    },\n    \"movie\": {\n        \"title\": \"Die Hard\",\n        \"description\": \"Ho-Ho-Ho!\"\n    },\n    \"startTime\": \"2025-03-25T23:00:00Z\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{host}}/api/v1/sessions",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"api",
+								"v1",
+								"sessions"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "/api/v1/sessions",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									""
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "{{token_auth}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"hall\": {\n        \"name\": \"Berlin City hall\",\n        \"totalRows\": 13,\n        \"seatsPerRow\": 23\n    },\n    \"movie\": {\n        \"name\": \"Die Hard\",\n        \"description\": \"Ho-Ho-Ho!\"\n    },\n    \"startTime\": \"2025-03-25T21:00:00Z\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{host}}/api/v1/sessions",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"api",
+								"v1",
+								"sessions"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "/api/v1/sessions/:id",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									""
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "{{token_auth}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"hall\": {\n        \"name\": \"Berlin City hall\",\n        \"totalRows\": 13,\n        \"seatsPerRow\": 23\n    },\n    \"movie\": {\n        \"name\": \"Die Hard\",\n        \"description\": \"Ho-Ho-Ho!\"\n    },\n    \"startTime\": \"2025-03-25T21:00:00Z\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{host}}/api/v1/sessions/4ed2b125-e4b0-4fbe-8184-fc841ea84224",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"api",
+								"v1",
+								"sessions",
+								"4ed2b125-e4b0-4fbe-8184-fc841ea84224"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "/api/v1/sessions/:id/seats",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									""
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "{{token_auth}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"hall\": {\n        \"name\": \"Berlin City hall\",\n        \"totalRows\": 13,\n        \"seatsPerRow\": 23\n    },\n    \"movie\": {\n        \"name\": \"Die Hard\",\n        \"description\": \"Ho-Ho-Ho!\"\n    },\n    \"startTime\": \"2025-03-25T21:00:00Z\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{host}}/api/v1/sessions/4ed2b125-e4b0-4fbe-8184-fc841ea84224/seats",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"api",
+								"v1",
+								"sessions",
+								"4ed2b125-e4b0-4fbe-8184-fc841ea84224",
+								"seats"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "/api/v1/sessions/:id",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									""
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"method": "PATCH",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "{{token_auth}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"movie\": {\n        \"title\": \"Inception22222\",\n        \"description\": \"A mind-bending sci-fi thriller about dream infiltration1\"\n    },\n    \"startTime\": \"2025-03-29T21:00:00Z\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{host}}/api/v1/sessions/4ed2b125-e4b0-4fbe-8184-fc841ea84224",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"api",
+								"v1",
+								"sessions",
+								"4ed2b125-e4b0-4fbe-8184-fc841ea84224"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "/api/v1/sessions/:id",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									""
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "{{token_auth}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{host}}/api/v1/sessions/4ed2b125-e4b0-4fbe-8184-fc841ea84224",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"api",
+								"v1",
+								"sessions",
+								"4ed2b125-e4b0-4fbe-8184-fc841ea84224"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "booking",
+			"item": [
+				{
+					"name": "/api/v1/bookings",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									""
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "{{token_auth}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"sessionId\":\"1081b740-6d01-40eb-8931-574a50e9ea5e\", \n    \"seats\": [{\n        \"rowNumber\": 1,\n        \"seatNumber\": 1\n    }]\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{host}}/api/v1/bookings",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"api",
+								"v1",
+								"bookings"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "/api/v1/bookings",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									""
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "{{token_auth}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"hall\": {\n        \"name\": \"Berlin City hall\",\n        \"totalRows\": 13,\n        \"seatsPerRow\": 23\n    },\n    \"movie\": {\n        \"name\": \"Die Hard\",\n        \"description\": \"Ho-Ho-Ho!\"\n    },\n    \"startTime\": \"2025-03-25T21:00:00Z\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{host}}/api/v1/sessions",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"api",
+								"v1",
+								"sessions"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "/api/v1/bookings/:id",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									""
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "{{token_auth}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"hall\": {\n        \"name\": \"Berlin City hall\",\n        \"totalRows\": 13,\n        \"seatsPerRow\": 23\n    },\n    \"movie\": {\n        \"name\": \"Die Hard\",\n        \"description\": \"Ho-Ho-Ho!\"\n    },\n    \"startTime\": \"2025-03-25T21:00:00Z\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{host}}/api/v1/bookings/e6140e35-8be9-4f8d-b55b-a0fd67893353",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"api",
+								"v1",
+								"bookings",
+								"e6140e35-8be9-4f8d-b55b-a0fd67893353"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "/api/v1/bookings/:id",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									""
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"method": "PATCH",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "{{token_auth}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"movie\": {\n        \"title\": \"Inception22222\",\n        \"description\": \"A mind-bending sci-fi thriller about dream infiltration1\"\n    },\n    \"startTime\": \"2025-03-29T21:00:00Z\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{host}}/api/v1/sessions/4ed2b125-e4b0-4fbe-8184-fc841ea84224",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"api",
+								"v1",
+								"sessions",
+								"4ed2b125-e4b0-4fbe-8184-fc841ea84224"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		}
+	]
+}
